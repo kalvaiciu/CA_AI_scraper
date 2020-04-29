@@ -32,6 +32,8 @@ def filtre(search_for, line, url):
             CSV_file(search, url, write)
 
 
+
+
 # Pasirinkto puslapio nuskaitymas
 def reading_text(url, links):
     # print(url)
