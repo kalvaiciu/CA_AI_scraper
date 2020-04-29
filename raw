@@ -55,7 +55,7 @@ def web_links_collector(all_path):
     for path in all_path:
         # collecting url in the web page as a list of the url
         source_code = requests.get(path)
-        soup = BeautifulSoup(source_code.content, 'lxml')
+        soup = BeautifulSoup(source_code.content, 'html.parser')
         data = []
         links = []
         for link in soup.find_all('a', href=True):
@@ -68,7 +68,7 @@ def web_links_collector(all_path):
                     for j in soup.find_all('a', href=True):
                         temp = []
                         source_code = requests.get(link)
-                        soup = BeautifulSoup(source_code.content, 'lxml')
+                        soup = BeautifulSoup(source_code.content, 'html.parser')
                         temp.append(str(j.get('href')))
                         remove_duplicates(temp,link)
                         if len(links) > 162:  # set limitation to number of URLs
